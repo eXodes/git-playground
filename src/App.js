@@ -9,6 +9,7 @@ function App() {
         <p>
           Handling complex Git flow is hard!
         </p>
+        <small>Not sure if I can do this right.</small>
         <a
           className="App-link"
           href="https://reactjs.org"
