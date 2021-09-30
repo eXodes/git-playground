@@ -17,6 +17,7 @@ function App() {
         <img src={logo} className='App-logo' alt='logo' />
 
         <p>Currently is {online ? "😀" : "😐"}</p>
+
         <motion.img
           src={logo}
           initial='hidden'
