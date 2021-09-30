@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { useNetworkState } from "react-use";
 import { motion } from "framer-motion";
 
 const variants = {
@@ -8,9 +9,14 @@ const variants = {
 };
 
 function App() {
+  const { online } = useNetworkState();
+
   return (
     <div className='App'>
       <header className='App-header'>
+        <img src={logo} className='App-logo' alt='logo' />
+
+        <p>Currently is {online ? "😀" : "😐"}</p>
         <motion.img
           src={logo}
           initial='hidden'
