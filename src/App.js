@@ -39,6 +39,8 @@ function App() {
         >
           Learn React
         </a>
+
+        <p>And state management!</p>
       </header>
     </div>
   );
