@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { useState } from 'react'
 import { useNetworkState } from "react-use";
 import { motion } from "framer-motion";
 
@@ -10,6 +11,7 @@ const variants = {
 
 function App() {
   const { online } = useNetworkState();
+  const [count, setCount] = useState(0);
 
   return (
     <div className='App'>
@@ -30,6 +32,8 @@ function App() {
           Handling complex Git flow is hard!
         </p>
         <small>Not sure if I can do this right.</small>
+        <p>{count}</p>
+        <button onClick={() => setCount(count + 1)}>Click me</button>
         <a
           className='App-link'
           href='https://reactjs.org'
