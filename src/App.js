@@ -14,10 +14,6 @@ function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-
-        <p>Currently is {online ? "😀" : "😐"}</p>
-
         <motion.img
           src={logo}
           initial='hidden'
@@ -26,10 +22,11 @@ function App() {
           className='App-logo'
           alt='logo'
         />
-        <p>
-          Handling complex Git flow is hard!
-        </p>
-        <small>Not sure if I can do this right.</small>
+        <p>Currently is {online ? "😀" : "😐"}</p>
+        <p>Handling complex Git flow is hard!</p>
+        <small style={{ marginBlockEnd: "1rem" }}>
+          Not sure if I can do this right.
+        </small>
         <a
           className='App-link'
           href='https://reactjs.org'
