@@ -39,7 +39,7 @@ jobs:
   pull:
     runs-on: ubuntu-20.04
     name: Pull Request
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request' && github.event.label.name == 'deployment'
 
     steps:
       - name: Run on Pull Request
