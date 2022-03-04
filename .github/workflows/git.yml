@@ -29,18 +29,18 @@ jobs:
 
   push:
     runs-on: ubuntu-20.04
-    name: Dump context
+    name: Push
     if: github.event_name == 'push'
 
     steps:
-      - name: Dump GitHub context
+      - name: Run on Push
         run: echo 'Push'
 
   pull:
     runs-on: ubuntu-20.04
-    name: Dump context
+    name: Pull Request
     if: github.event_name == 'pull_request'
 
     steps:
-      - name: Dump GitHub context
+      - name: Run on Pull Request
         run: echo 'Pull Request'
