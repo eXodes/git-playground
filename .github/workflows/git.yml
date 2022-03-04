@@ -3,7 +3,9 @@ name: Git
 on:
   workflow_run:
     workflows:
-      - Node.js CI
+      - Deployment
+    types:
+      - completed
 
 jobs:
   dump:
