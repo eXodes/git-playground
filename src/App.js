@@ -24,13 +24,16 @@ function App() {
           className='App-logo'
           alt='logo'
         />
+
         <p>Currently is {online ? "😀" : "😐"}</p>
+
         <p>Handling complex Git flow is hard!</p>
         <small style={{ marginBlockEnd: "1rem" }}>
           Not sure if I can do this right.
         </small>
+
         <p>{count}</p>
-        <button onClick={() => setCount(count + 1)}>Click me</button>
+        <button onClick={() => setCount(count + 1)}>Add counter</button>
         <a
           className='App-link'
           href='https://reactjs.org'
