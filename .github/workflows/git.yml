@@ -26,3 +26,21 @@ jobs:
         
       - name: Dump steps context
         run: echo '${{ toJSON(steps) }}'
+
+  push:
+    runs-on: ubuntu-20.04
+    name: Dump context
+    if: github.event_name == 'push'
+
+    steps:
+      - name: Dump GitHub context
+        run: echo 'Push'
+
+  pull:
+    runs-on: ubuntu-20.04
+    name: Dump context
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Dump GitHub context
+        run: echo 'Pull Request'
