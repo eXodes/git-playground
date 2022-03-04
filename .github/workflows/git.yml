@@ -2,7 +2,8 @@ name: Git
 
 on:
   workflow_run:
-    workflows: ["Node.js CI"]
+    workflows:
+      - Node.js CI
     types: [completed]
     branches:
       - main
@@ -12,6 +13,7 @@ jobs:
   dump:
     runs-on: ubuntu-20.04
     name: Dump context
+    if: github.event.workflow_run.conclusion == 'success'
 
     steps:
       - name: Dump GitHub context
@@ -27,7 +29,7 @@ jobs:
   push:
     runs-on: ubuntu-20.04
     name: Push
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && github.event.workflow_run.conclusion == 'success'
 
     steps:
       - name: Run on Push
@@ -36,7 +38,7 @@ jobs:
   pull:
     runs-on: ubuntu-20.04
     name: Pull Request
-    if: github.event_name == 'pull_request' && github.event.label.name == 'deployment'
+    if: github.event_name == 'pull_request' && github.event.label.name == 'deployment' && github.event.workflow_run.conclusion == 'success'
 
     steps:
       - name: Run on Pull Request
