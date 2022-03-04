@@ -1,15 +1,11 @@
 name: Git
 
 on:
-  push:
-    branches:
-      - main
-      - dev
-  pull_request:
-    branches:
-      - main
-  check_suite:
-    types: [completed]
+  workflow_run:
+    workflows:
+      - Deployment
+    types:
+      - completed
 
 jobs:
   dump:
@@ -27,20 +23,29 @@ jobs:
       - name: Dump steps context
         run: echo '${{ toJSON(steps) }}'
 
-  push:
+      - name: Dump steps context
+        run: echo '${{ toJSON(steps) }}'
+
+  success:
     runs-on: ubuntu-20.04
-    name: Push
-    if: github.event_name == 'push'
+    name: Success
+    if: github.event.workflow_run.conclusion == 'success'
 
     steps:
-      - name: Run on Push
-        run: echo 'Push'
+      - name: Run on success
+        run: echo 'Success'
 
-  pull:
+      - name: Dump GitHub context
+        run: echo '${{ toJSON(github) }}'
+
+  labelled:
     runs-on: ubuntu-20.04
-    name: Pull Request
-    if: github.event_name == 'pull_request' && github.event.label.name == 'deployment'
+    name: With Label
+    if: github.event.workflow_run.conclusion == 'success' && github.event.label.name == 'deployment'
 
     steps:
-      - name: Run on Pull Request
-        run: echo 'Pull Request'
+      - name: Run on success with label
+        run: echo 'Success with label'
+
+      - name: Dump GitHub context
+        run: echo '${{ toJSON(github) }}'
