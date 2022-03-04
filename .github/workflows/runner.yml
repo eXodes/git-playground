@@ -1,4 +1,4 @@
-name: Git
+name: Workflow Runner
 
 on:
   workflow_run:
