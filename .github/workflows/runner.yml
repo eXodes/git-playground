@@ -1,9 +1,15 @@
-name: Workflow Runner
+name: Post Suite Runner
 
 on:
-  workflow_run:
-    workflows:
-      - Deployment
+  push:
+    branches:
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      - dev
+  check_suite:
     types:
       - completed
 
