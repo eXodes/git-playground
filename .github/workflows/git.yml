@@ -3,9 +3,9 @@ name: Git
 on:
   workflow_run:
     workflows:
-      - "Deployment"
+      - Deployment
     types:
-      - requested
+      - completed
 
 jobs:
   dump:
