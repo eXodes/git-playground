@@ -13,7 +13,6 @@ jobs:
   dump:
     runs-on: ubuntu-20.04
     name: Dump context
-    if: github.event.workflow_run.conclusion == 'success'
 
     steps:
       - name: Dump GitHub context
@@ -23,6 +22,9 @@ jobs:
       - name: Dump job context
         run: echo '${{ toJSON(job) }}'
         
+      - name: Dump steps context
+        run: echo '${{ toJSON(steps) }}'
+
       - name: Dump steps context
         run: echo '${{ toJSON(steps) }}'
 
