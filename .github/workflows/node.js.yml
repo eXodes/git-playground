@@ -34,6 +34,13 @@ jobs:
       - name: Run test
         run: npm test
 
+      - name: Call workflow
+        if: github.event_name == 'pull_request' && github.event.label.name == 'deployment'
+        uses: ./.github/workflows/runner.yml
+        with:
+          branch: ${{ github.head_ref }}
+          environment: production
+
       - name: Deploy to GitHub Pages
         if: github.event.push
         uses: JamesIves/github-pages-deploy-action@4.1.5
