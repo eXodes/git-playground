@@ -1,17 +1,17 @@
 name: Post Suite Runner
 
 on:
-  push:
-    branches:
-      - main
-      - dev
-  pull_request:
-    branches:
-      - main
-      - dev
-  check_suite:
-    types:
-      - completed
+  workflow_call:
+    inputs:
+      branch:
+        required: true
+        type: string
+      environment:
+        required: true
+        type: string
+    secrets:
+      token:
+        required: true
 
 jobs:
   dump:
@@ -40,6 +40,12 @@ jobs:
     steps:
       - name: Run on success
         run: echo 'Success'
+
+      - name: Show branch
+        run: echo '${{ inputs.branch }}'
+
+      - name: Show environment
+        run: echo '${{ inputs.environment }}'
 
       - name: Dump GitHub context
         run: echo '${{ toJSON(github) }}'
